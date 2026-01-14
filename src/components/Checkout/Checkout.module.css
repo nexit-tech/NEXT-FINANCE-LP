@@ -203,3 +203,48 @@
     margin-top: -20px; /* Efeito card subindo */
   }
 }
+
+@media (max-width: 850px) {
+  .pageContainer {
+    padding: 0;
+    align-items: flex-start;
+    background-color: #ffffff; /* Fundo branco no mobile para parecer app nativo */
+  }
+
+  .checkoutBox {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    min-height: 100vh;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .summarySide {
+    padding: 20px;
+    height: auto;
+    order: -1; /* Mantém o resumo no topo */
+  }
+
+  .mainPrice {
+    font-size: 2.5rem;
+  }
+
+  .paymentSide {
+    padding: 24px 20px 40px 20px;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .paymentSide h2 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .payButton {
+    position: sticky;
+    bottom: 20px; /* Botão fica fixo ou fácil de alcançar */
+    width: 100%;
+    margin-top: 20px;
+    z-index: 10;
+  }
+}

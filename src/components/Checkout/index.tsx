@@ -52,7 +52,15 @@ const CheckoutForm = ({ customerDetails }: { customerDetails: { name: string; em
 
   return (
     <form className={styles.formGrid} onSubmit={handleSubmit}>
-      <PaymentElement id="payment-element" options={{ layout: 'tabs' }} />
+      <PaymentElement 
+        id="payment-element" 
+        options={{ 
+            layout: 'tabs', // 'tabs' é melhor para mostrar Google/Apple Pay lado a lado com Cartão
+            wallets: {
+            applePay: 'auto',
+            googlePay: 'auto'
+            }
+        }} />
       
       {message && <div style={{color: '#ef4444', fontSize: '0.9rem', marginTop: '10px'}}>{message}</div>}
 
