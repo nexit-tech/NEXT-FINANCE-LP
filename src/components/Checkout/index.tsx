@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-// Inicializa o Stripe
+// Inicializa o Stripe com sua chave pública
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 // --- FORMULÁRIO DO STRIPE ---
@@ -24,18 +24,15 @@ const CheckoutForm = ({ customerDetails }: { customerDetails: { name: string; em
 
     setIsLoading(true);
 
-    // 1. SEGURANÇA A: Salva no navegador (localStorage)
-    // Isso protege caso a URL se perca em algum redirect bancário
+    // Salva o telefone no navegador para recuperação na tela de sucesso
     localStorage.setItem('nextfinance_user_phone', customerDetails.phone);
 
-    // 2. SEGURANÇA B: Manda na URL também
-    // Garante que o parâmetro viaje junto com o usuário
     const returnUrl = `${window.location.origin}/success?phone=${encodeURIComponent(customerDetails.phone)}`;
 
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: returnUrl, // <--- AQUI ESTÁ A DUPLA SEGURANÇA
+        return_url: returnUrl,
         payment_method_data: {
             billing_details: {
                 name: customerDetails.name,
@@ -52,21 +49,23 @@ const CheckoutForm = ({ customerDetails }: { customerDetails: { name: string; em
 
   return (
     <form className={styles.formGrid} onSubmit={handleSubmit}>
+      {/* O PaymentElement gerencia Cartão, Apple Pay e Google Pay automaticamente */}
       <PaymentElement 
         id="payment-element" 
         options={{ 
-            layout: 'tabs', // 'tabs' é melhor para mostrar Google/Apple Pay lado a lado com Cartão
-            wallets: {
+          layout: 'tabs', // 'tabs' faz o Apple/Google Pay aparecerem em botões de destaque no topo
+          wallets: {
             applePay: 'auto',
             googlePay: 'auto'
-            }
-        }} />
+          }
+        }} 
+      />
       
       {message && <div style={{color: '#ef4444', fontSize: '0.9rem', marginTop: '10px'}}>{message}</div>}
 
       <button disabled={isLoading || !stripe || !elements} className={styles.payButton}>
         <Lock size={18} />
-        {isLoading ? "Processando..." : "Pagar R$ 9,99"}
+        {isLoading ? "Processando..." : "Finalizar Pagamento"}
       </button>
 
       <div className={styles.secureBadge}>
@@ -87,7 +86,6 @@ export const Checkout = () => {
   const [phone, setPhone] = useState('');
   const [clientSecret, setClientSecret] = useState('');
 
-  // Formata o telefone (WhatsApp)
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.replace(/\D/g, ''); 
     if (value.length > 11) value = value.slice(0, 11);
@@ -118,7 +116,7 @@ export const Checkout = () => {
                 name, 
                 email, 
                 phone, 
-                priceId: "price_1SpRkXEPMFQsmBYnxVZWei9c" 
+                priceId: "price_1SpMOiPcTSpOuKiPBVLA1FGG" 
             }),
         });
 
@@ -143,6 +141,7 @@ export const Checkout = () => {
       colorBackground: '#ffffff',
       colorText: '#30313d',
       fontFamily: '"Montserrat", sans-serif',
+      borderRadius: '12px',
     },
   };
 
@@ -150,7 +149,6 @@ export const Checkout = () => {
     <div className={styles.pageContainer}>
       <div className={styles.checkoutBox}>
         
-        {/* ESQUERDA */}
         <div className={styles.summarySide}>
           <div>
             <Link to="/" className={styles.backButton}>
@@ -176,7 +174,6 @@ export const Checkout = () => {
           </div>
         </div>
 
-        {/* DIREITA */}
         <div className={styles.paymentSide}>
           <h2>{step === 1 ? "Seus Dados" : "Pagamento"}</h2>
           
