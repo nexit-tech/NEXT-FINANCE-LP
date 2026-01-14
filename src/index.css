@@ -1,0 +1,33 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --color-lime: #ccf300;
+  --color-dark: #0a0a0a;
+  /* MUDANÇA AQUI: Fundo base agora é VERDE, matando a barra branca */
+  --color-bg: #059669; 
+  --font-main: 'Montserrat', sans-serif;
+}
+
+html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: scroll; 
+  overflow-x: hidden;
+  background-color: var(--color-bg); /* Usa o verde definido acima */
+  scrollbar-width: none; 
+}
+
+/* Esconde Scrollbar no Chrome/Safari/Edge */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  color: var(--color-dark);
+  font-family: var(--font-main);
+  -webkit-font-smoothing: antialiased;
+}

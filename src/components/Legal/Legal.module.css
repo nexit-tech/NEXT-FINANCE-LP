@@ -1,0 +1,88 @@
+/* src/components/Legal/Legal.module.css */
+.pageContainer {
+  min-height: 100vh;
+  background-color: #022c22;
+  color: #e2e8f0;
+  padding: 60px 20px;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+.contentBox {
+  max-width: 800px;
+  width: 100%;
+  background: rgba(6, 78, 59, 0.4); /* Vidro escuro */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 60px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ccf300;
+  text-decoration: none;
+  font-weight: 700;
+  margin-bottom: 40px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  transform: translateX(-5px);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.lastUpdate {
+  display: block;
+  font-size: 0.9rem;
+  color: #6ee7b7;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+.textBody h2 {
+  color: #fff;
+  font-size: 1.5rem;
+  margin-top: 40px;
+  margin-bottom: 16px;
+  border-left: 4px solid #ccf300;
+  padding-left: 16px;
+}
+
+.textBody p {
+  line-height: 1.8;
+  margin-bottom: 16px;
+  color: #cbd5e1;
+}
+
+.textBody ul {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.textBody li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .contentBox {
+    padding: 30px 20px;
+  }
+  .title {
+    font-size: 2rem;
+  }
+}

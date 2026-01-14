@@ -1,0 +1,196 @@
+/* src/components/Features/Features.module.css */
+
+.section {
+  width: 100%;
+  background: radial-gradient(circle at 50% 50%, #064e3b 0%, #022c22 100%);
+  color: white;
+  padding-top: 80px; 
+  margin-top: -2px; /* Mantém a correção do "tracinho" */
+  position: relative;
+  z-index: 10; 
+  overflow: hidden;
+  min-height: 100vh; 
+  display: flex;
+  align-items: flex-end; 
+}
+
+.container {
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center; 
+  position: relative;
+  padding: 0 20px;
+  height: 100%;
+}
+
+/* --- COLUNA DA MULHER (ESQUERDA) --- */
+.columnImage {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: flex-end; 
+  justify-content: flex-start;
+  z-index: 1; 
+}
+
+.womanImg {
+  width: 250%; 
+  max-width: 2500px; 
+  margin-left: 10px; 
+  margin-bottom: -5px; 
+  margin-right: -300px; 
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(0,0,0,0.6));
+  mask-image: linear-gradient(to bottom, black 90%, transparent 100%);
+}
+
+.glowEffect {
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle, rgba(204,243,0,0.12) 0%, rgba(0,0,0,0) 70%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* --- COLUNA DE CONTEÚDO (DIREITA) --- */
+.columnContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0; 
+  padding-bottom: 100px;
+  position: relative;
+  z-index: 20; 
+}
+
+.header {
+  text-align: left; 
+  margin-bottom: 60px;
+}
+
+.header h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 0.9;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.highlight {
+  color: #ccf300;
+  text-shadow: 0 0 30px rgba(204, 243, 0, 0.3);
+}
+
+.header p {
+  font-size: 1.2rem;
+  color: #a3b8b0;
+  font-weight: 500;
+  max-width: 500px;
+  line-height: 1.4;
+}
+
+/* Lista de Features */
+.featuresList {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  text-align: left;
+}
+
+.iconBox {
+  flex-shrink: 0;
+}
+
+.iconBox img {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+  transition: transform 0.3s ease;
+}
+
+.featureItem:hover .iconBox img {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.textArea h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.textArea p {
+  font-size: 1rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  max-width: 420px;
+  font-weight: 400;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 1024px) {
+  .section {
+    height: auto;
+    min-height: auto;
+    display: block;
+    padding-bottom: 60px; /* Adicionei um padding extra embaixo */
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    display: block; /* Remove o flex column-reverse que jogava ela pra baixo */
+  }
+
+  /* --- AQUI ESTÁ A MÁGICA: --- */
+  /* Removemos completamente a coluna da imagem (Mulher + Glow) no mobile */
+  .columnImage {
+    display: none; 
+  }
+
+  .columnContent {
+    padding-left: 0;
+    align-items: center;
+    text-align: center;
+    padding-top: 40px; 
+    padding-bottom: 0;
+    width: 100%;
+  }
+  
+  .header { 
+    text-align: center; 
+    margin-bottom: 40px; 
+    width: 100%;
+  }
+  
+  .header h2 { font-size: 2.5rem; }
+  
+  .featuresList { 
+    gap: 32px; 
+    align-items: center; /* Centraliza a lista */
+  }
+  
+  .featureItem { 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center; 
+  }
+  
+  .textArea p {
+    max-width: 100%; /* Deixa o texto usar a largura total se precisar */
+  }
+}

@@ -1,0 +1,193 @@
+/* src/components/Success/Success.module.css */
+.container {
+  min-height: 100vh;
+  background-color: #022c22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.card {
+  background: rgba(6, 78, 59, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 32px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 10;
+  min-height: 480px; /* Aumentei um pouco para caber tudo folgado */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* --- BARRA DE PROGRESSO (REFEITA) --- */
+.progressContainer {
+  position: relative; /* Agora flutua dentro do card, não na borda */
+  width: 100%;
+  height: 6px; /* Mais fina e elegante */
+  background: rgba(255, 255, 255, 0.1); /* Fundo sutil */
+  border-radius: 100px; /* Pílula completa */
+  margin-bottom: 40px; /* Empurra o conteúdo para baixo */
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: #ccf300;
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Movimento suave */
+  box-shadow: 0 0 12px rgba(204, 243, 0, 0.6); /* Brilho Neon */
+}
+
+/* --- TÍTULOS --- */
+.stepTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.stepDesc {
+  color: #d1d5db;
+  font-size: 1rem;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+/* --- CARDS DE OPÇÃO --- */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.optionCard {
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid transparent;
+  padding: 16px;
+  border-radius: 16px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.optionCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.optionCard.selected {
+  border-color: #ccf300;
+  background: rgba(204, 243, 0, 0.1);
+  color: #ccf300;
+}
+
+/* --- INPUTS PREMIUM --- */
+.inputBig {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #4b5563;
+  color: #ccf300;
+  font-size: 3rem;
+  font-weight: 800;
+  text-align: center;
+  width: 100%;
+  margin: 10px 0 40px 0;
+  padding-bottom: 10px;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.3s;
+}
+
+.inputBig:focus {
+  border-bottom-color: #ccf300;
+}
+
+.inputBig::placeholder {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* REMOVE SETINHAS (Chrome, Safari, Edge, Opera) */
+.inputBig::-webkit-outer-spin-button,
+.inputBig::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none; /* <--- Adicione esta linha para corrigir o erro */
+  margin: 0;
+}
+/* REMOVE SETINHAS (Firefox) */
+.inputBig[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield; /* <--- Recomendado adicionar aqui também */
+}
+
+/* --- BOTÕES --- */
+.actionButton {
+  background-color: #ccf300;
+  color: #022c22;
+  border: none;
+  padding: 20px;
+  width: 100%;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+.actionButton:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(204, 243, 0, 0.25);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #4b5563;
+  color: #9ca3af;
+}
+
+/* LINK DE PULAR (ESPAÇAMENTO CORRIGIDO) */
+.skipButton {
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-top: 32px; /* <--- AUMENTADO (Era 20px) */
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+  display: inline-block; /* Garante que o margin funcione bem */
+}
+
+.skipButton:hover {
+  color: #9ca3af;
+}
+
+/* --- ANIMAÇÕES --- */
+.fadeIn {
+  animation: fadeIn 0.4s ease-out;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

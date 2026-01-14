@@ -1,0 +1,16 @@
+/* src/App.css */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: block;
+  /* Garante que o root não limite o background do body */
+  background: transparent; 
+}
+
+/* Remove paddings padrões que podem causar scroll lateral ou fundo branco */
+html, body {
+  margin: 0;
+  padding: 0;
+}

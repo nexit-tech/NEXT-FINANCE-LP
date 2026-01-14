@@ -1,0 +1,292 @@
+/* src/components/Hero/PhoneMockup.module.css */
+
+/* --- ESTRUTURA FÍSICA --- */
+.phoneFrame {
+  position: relative;
+  width: 380px;
+  height: 780px;
+  background-color: #000000; 
+  border-radius: 56px;
+  box-shadow: 
+    0 0 0 4px #333,
+    0 0 0 7px #000,
+    0 50px 100px -20px rgba(0,0,0,0.4);
+  padding: 12px;
+  z-index: 10;
+  overflow: visible;
+}
+
+/* Botões Físicos */
+.buttonLeftTop, .buttonLeftBottom, .buttonRight {
+  position: absolute;
+  background: #1a1a1a;
+  border-radius: 4px;
+  z-index: -1;
+}
+.buttonLeftTop { top: 180px; left: -4px; width: 4px; height: 35px; }
+.buttonLeftBottom { top: 225px; left: -4px; width: 4px; height: 35px; }
+.buttonRight { top: 210px; right: -4px; width: 4px; height: 60px; }
+
+.screen {
+  width: 100%;
+  height: 100%;
+  background-color: #EFE7DE;
+  border-radius: 44px; 
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black); /* <--- Adicione esta linha */
+}
+
+/* --- STATUS BAR & ISLAND --- */
+.statusBar {
+  height: 54px;
+  width: 100%;
+  position: absolute;
+  top: 16px;
+  left: 0;
+  padding: 0 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 60;
+  color: black;
+  font-weight: 600;
+  font-size: 15px;
+  pointer-events: none;
+}
+
+.dynamicIsland {
+  width: 126px;
+  height: 37px;
+  background: #000;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  z-index: 70;
+}
+
+.cameraDot {
+  width: 12px;
+  height: 12px;
+  background: #101010;
+  border-radius: 50%;
+  box-shadow: inset 0 0 4px rgba(255,255,255,0.1);
+}
+
+.statusIcons { display: flex; gap: 6px; align-items: center; }
+.batteryIcon {
+  width: 26px;
+  height: 12px;
+  border: 1px solid rgba(0,0,0,0.35);
+  border-radius: 4px;
+  background: black;
+}
+
+/* --- HEADER FIX (SEM AVATAR + SAFE AREA) --- */
+.waHeader {
+  background: rgba(246, 246, 246, 0.92);
+  backdrop-filter: blur(12px);
+  /* AUMENTADO PARA 80px: Empurra tudo para baixo da ilha */
+  padding: 80px 16px 12px 16px; 
+  border-bottom: 1px solid rgba(0,0,0,0.15);
+  z-index: 50;
+  position: relative;
+}
+
+.headerTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px; /* Altura da linha de conteúdo */
+  position: relative;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  color: #007AFF;
+  font-size: 17px;
+  margin-left: -6px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Perfil Centralizado */
+.headerProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100%; /* Ocupa toda a altura da linha para centralizar */
+  top: 0;
+}
+
+.contactInfo h4 { 
+  font-size: 16px; /* Levemente maior para compensar falta do avatar */
+  color: #000; 
+  margin: 0; 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 4px;
+}
+.contactInfo p { font-size: 11px; color: #888; margin: 0; text-align: center; }
+
+.verifiedBadge {
+  width: 14px;
+  height: 14px;
+  background-color: #25D366;
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='10px' height='10px'%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* --- RESTO DO CHAT (IGUAL) --- */
+.chatArea {
+  flex: 1;
+  background-color: #EFE7DE;
+  background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+  background-repeat: repeat;
+  background-size: 400px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dateDivider {
+  align-self: center;
+  background: rgba(225, 232, 235, 0.9);
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #555;
+  font-weight: 500;
+  margin: 10px 0;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.messageRow {
+  display: flex;
+  width: 100%;
+  margin-bottom: 2px;
+}
+.received { justify-content: flex-start; }
+.sent { justify-content: flex-end; }
+
+.bubble {
+  max-width: 82%;
+  padding: 8px 10px 24px 12px;
+  border-radius: 12px;
+  position: relative;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #000;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+
+.received .bubble {
+  background: #FFFFFF;
+  border-top-left-radius: 0;
+  margin-left: 8px;
+}
+.received .bubble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -8px;
+  width: 8px;
+  height: 13px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.533 3.568L8 12.193V0H2.812C1.042 0 .474 1.565 1.533 3.568z' fill='%23FFFFFF'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.sent .bubble {
+  background: #E1FFC7;
+  border-top-right-radius: 0;
+  margin-right: 8px;
+}
+.sent .bubble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -8px;
+  width: 8px;
+  height: 13px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.467 3.568L0 12.193V0h5.188c1.77 0 2.338 1.565 1.28 3.568z' fill='%23E1FFC7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+}
+
+.msgTime {
+  position: absolute;
+  bottom: 4px;
+  right: 6px;
+  font-size: 11px;
+  color: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.readReceipt { color: #34B7F1; stroke-width: 2.5px; }
+
+.financeCard {
+  background: rgba(0,0,0,0.03);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-left: 3px solid #25D366;
+}
+.cardIcon { font-size: 20px; }
+.financeCard div { display: flex; flex-direction: column; }
+.financeCard span { font-size: 11px; color: #666; }
+.financeCard strong { font-size: 14px; color: #000; font-weight: 600; }
+
+.inputArea {
+  background: #F6F6F6;
+  padding: 10px 16px 34px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.inputWrapper {
+  flex: 1;
+  background: #FFF;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 20px;
+  height: 38px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+.homeIndicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 135px;
+  height: 5px;
+  background: #000;
+  border-radius: 100px;
+}

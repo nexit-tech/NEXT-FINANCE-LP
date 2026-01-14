@@ -1,0 +1,205 @@
+/* src/components/Checkout/Checkout.module.css */
+
+.pageContainer {
+  min-height: 100vh;
+  background-color: #022c22; /* Fundo escuro premium */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.checkoutBox {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  max-width: 1000px;
+  width: 100%;
+  background: #064e3b; /* Um tom mais claro que o fundo */
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- LADO ESQUERDO: RESUMO --- */
+.summarySide {
+  background: #065f46;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a7f3d0;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.backButton:hover {
+  color: #fff;
+}
+
+.planTitle {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #ccf300;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.mainPrice {
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.mainPrice span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  color: #ecfdf5;
+  font-size: 0.95rem;
+}
+
+/* --- LADO DIREITO: FORMULÁRIO --- */
+.paymentSide {
+  background: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.paymentSide h2 {
+  font-size: 1.5rem;
+  color: #111827;
+  margin-bottom: 24px;
+  font-weight: 800;
+}
+
+.formGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.inputField {
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #f9fafb;
+  transition: all 0.2s;
+  outline: none;
+  font-family: inherit;
+}
+
+.inputField:focus {
+  border-color: #059669;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Botão de Pagar */
+.payButton {
+  margin-top: 32px;
+  background-color: #059669;
+  color: white;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s;
+}
+
+.payButton:hover {
+  background-color: #047857;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3);
+}
+
+.secureBadge {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 850px) {
+  .checkoutBox {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    height: 100vh;
+    border: none;
+  }
+  
+  .pageContainer {
+    padding: 0;
+    align-items: flex-start;
+  }
+
+  .summarySide {
+    padding: 30px 20px;
+    height: auto;
+  }
+
+  .paymentSide {
+    padding: 30px 20px;
+    border-radius: 24px 24px 0 0;
+    margin-top: -20px; /* Efeito card subindo */
+  }
+}

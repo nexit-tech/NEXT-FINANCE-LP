@@ -1,0 +1,199 @@
+/* src/components/Hero/Hero.module.css */
+
+.mainContainer {
+  position: relative;
+  /* MUDANÇA CRUCIAL: De 250vh para 100vh. 
+     Agora a página não tem scroll "sobrando". Funciona como um App. */
+  height: 100vh; 
+  width: 100%;
+  overflow: hidden; /* Garante que nada vaze */
+}
+
+.stickyContent {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- TEXTOS E ANIMAÇÕES DE FUNDO --- */
+
+.marqueeContainer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.marqueeTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: slideLeft 60s linear infinite;
+}
+
+.marqueeTrackReverse {
+  display: flex;
+  white-space: nowrap;
+  animation: slideRight 60s linear infinite;
+}
+
+.bigText {
+  font-size: 8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 0 40px;
+  line-height: 0.9;
+  letter-spacing: -4px;
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.floatingWord {
+  position: absolute;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  color: #111827;
+  opacity: 0;
+  z-index: -2;
+  pointer-events: none;
+  user-select: none;
+  animation: flashWord 5s infinite ease-in-out;
+}
+
+@keyframes flashWord {
+  0%, 100% { opacity: 0; transform: scale(0.9); }
+  50% { opacity: 0.15; transform: scale(1); }
+}
+
+.floatingTitle {
+  position: absolute;
+  top: 5%; 
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #111827;
+  z-index: 20;
+  width: 100%;
+  pointer-events: none;
+}
+
+.floatingTitle h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.floatingTitle span {
+  color: #059669;
+  background: linear-gradient(120deg, #059669 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  background-clip: text; /* <--- Adicione esta linha */
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- CELULAR E ZOOM --- */
+
+.phoneWrapper {
+  filter: drop-shadow(0 40px 60px rgba(0,0,0,0.2));
+  will-change: transform;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 140px; 
+}
+
+.phonePhysicalBody {
+  position: relative;
+  z-index: 10;
+}
+
+.greenScreenOverlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  background-color: #059669;
+  border-radius: 40px;
+  z-index: 100;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  overflow: hidden;
+}
+
+.innerBannerContent {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simpleBannerText {
+  font-size: 0.8rem;
+  font-weight: 900;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+@media (max-width: 768px) {
+  .phoneWrapper {
+    zoom: 0.85; 
+    margin-top: 120px; 
+  }
+
+  .bigText { 
+    font-size: 3.5rem; 
+    padding: 0 20px;
+    letter-spacing: -2px; 
+  }
+
+  .floatingTitle {
+    top: 5%; 
+    width: 90%;
+  }
+
+  .floatingTitle h1 { 
+    font-size: 2rem; 
+  }
+
+  .floatingWord {
+    font-size: 1rem !important; 
+  }
+}
+
+@media (max-width: 380px) {
+  .phoneWrapper {
+    zoom: 0.75; 
+    margin-top: 100px;
+  }
+}

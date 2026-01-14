@@ -1,0 +1,122 @@
+/* src/components/Footer/Footer.module.css */
+
+.footer {
+  width: 100%;
+  background-color: #022c22;
+  color: #e5e7eb;
+  padding: 80px 20px 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+/* --- GRID SIMPLIFICADO --- */
+.topSection {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr; 
+  gap: 40px;
+}
+
+.brandColumn h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.brandColumn p {
+  font-size: 0.95rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  max-width: 320px;
+}
+
+/* --- TÍTULOS E LISTAS --- */
+.column h4 {
+  color: #ccf300;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Estilo padrão para links na lista */
+.list a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-block; 
+}
+
+.list a:hover {
+  color: #ccf300;
+  transform: translateX(4px);
+}
+
+/* --- CORREÇÃO DO ALINHAMENTO DO ÍCONE --- */
+/* Aumentei a especificidade usando "a.iconLink" para garantir que o flex funcione */
+a.iconLink {
+  display: flex;
+  align-items: center; /* Centraliza verticalmente o ícone com o texto */
+  gap: 10px;
+  line-height: 1; /* Garante altura de linha compacta para não distorcer o centro */
+}
+
+a.iconLink svg {
+  display: block; /* Previne espaços fantasmas de SVG */
+}
+
+/* --- RODAPÉ --- */
+.bottomSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #4b5563; 
+}
+
+.credits {
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .topSection {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .brandColumn p {
+    margin: 0 auto;
+  }
+
+  a.iconLink {
+    justify-content: center; /* Centraliza no mobile */
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
