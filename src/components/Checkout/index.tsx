@@ -116,7 +116,7 @@ export const Checkout = () => {
                 name, 
                 email, 
                 phone, 
-                priceId: "price_1SpMOiPcTSpOuKiPBVLA1FGG" 
+                priceId: "price_1SpRkXEPMFQsmBYnxVZWei9c" 
             }),
         });
 
